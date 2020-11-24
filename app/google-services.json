@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "680785436411",
+    "firebase_url": "https://vedroidchat-3dd4f.firebaseio.com",
+    "project_id": "vedroidchat-3dd4f",
+    "storage_bucket": "vedroidchat-3dd4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680785436411:android:080d84039305813d9a1a5e",
+        "android_client_info": {
+          "package_name": "com.samuilolegovich.vedroidchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680785436411-22kmked4cn74gqdbspn65iofrhe2gsh7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.samuilolegovich.vedroidchat",
+            "certificate_hash": "1fd46a418e24f34dce353fa39bace56892ebfda3"
+          }
+        },
+        {
+          "client_id": "680785436411-v3l8a59c64u5cfdj2hcdj50vekpo8vto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAreDokR8CTReYBenBjDEvFw0EtnQ53uUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680785436411-v3l8a59c64u5cfdj2hcdj50vekpo8vto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
