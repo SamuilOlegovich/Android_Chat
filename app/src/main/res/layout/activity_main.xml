@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:id="@+id/main_relative_layout">
+    >
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         app:srcCompat="@drawable/ic_send_message"
@@ -22,7 +23,7 @@
         app:fabSize="normal"
         />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <hani.momanii.supernova_emoji_library.Helper.EmojiconEditText
         android:layout_toLeftOf="@+id/button_send_message"
         android:background="@drawable/input_text"
         android:layout_alignParentBottom="true"
@@ -41,12 +42,24 @@
         android:text=""
         />
 
+    <ImageView
+        android:id="@+id/emoji_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="265dp"
+        android:layout_marginBottom="25dp"
+        android:padding="4dp"
+        android:src="@drawable/iconfinder_23_3561856" />
+
     <ListView
         android:layout_above="@+id/button_send_message"
         android:layout_toEndOf="@+id/input_text_field"
         android:divider="@android:color/transparent"
         android:background="@drawable/input_text"
         android:layout_alignParentStart="true"
+        android:transcriptMode="alwaysScroll"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
@@ -55,6 +68,7 @@
         android:id="@+id/list_of_message"
         android:layout_marginTop="11dp"
         android:layout_marginEnd="11dp"
+        android:stackFromBottom="true"
         android:dividerHeight="15dp"
         />
 
