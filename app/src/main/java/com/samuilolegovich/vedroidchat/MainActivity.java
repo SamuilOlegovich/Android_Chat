@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.Nullable;
 
 import android.text.format.DateFormat;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.github.library.bubbleview.BubbleTextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,7 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
-import com.firebase.ui.auth.AuthUI;
 
 import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
 import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
@@ -34,13 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseListAdapter<Message> adapter;
     private RelativeLayout mainRelativeLayout;
     private EmojiconEditText emojiconEditText;
+    private EmojIconActions emojiIconActions;
     private FloatingActionButton sendButton;
-    private EmojIconActions emojIconActions;
     private ImageView emojiButton;
 
-
     private static int SING_IN_CODE = 1;
-
 
     // для подключения базы данных
     // для авторизации
@@ -49,24 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     // для работы с таблицами внутри базы данных
     private DatabaseReference databaseReference;
-    private View main_relative_layout;
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == SING_IN_CODE) {
-            if (requestCode == RESULT_OK) {
-                Snackbar.make(mainRelativeLayout, "Вы успешно зарегистрированы :)",
-                        Snackbar.LENGTH_LONG).show();
-                displayAllMessage();
-            } else {
-                Snackbar.make(mainRelativeLayout, "Вы не зарегистрированы :(",
-                        Snackbar.LENGTH_LONG).show();
-                finish();
-            }
-        }
-    }
 
 
     @Override
@@ -84,10 +64,8 @@ public class MainActivity extends AppCompatActivity {
         emojiconEditText = (EmojiconEditText) findViewById(R.id.input_text_field);
         emojiButton = (ImageView) findViewById(R.id.emoji_button);
         // позволяет вызывать клавиатуру с эмоджи
-        emojIconActions = new EmojIconActions(getApplicationContext(), MainActivity.this,
-                emojiconEditText, emojiButton) ;
-        emojIconActions.ShowEmojIcon();
-
+        emojiIconActions = new EmojIconActions(getApplicationContext(), mainRelativeLayout, emojiconEditText, emojiButton);
+        emojiIconActions.ShowEmojIcon();
 
 
         // привязываем к кнопке событие
@@ -113,19 +91,36 @@ public class MainActivity extends AppCompatActivity {
          *     implementation 'com.google.firebase:firebase-auth:16.0.1'
          *     implementation 'com.google.firebase:firebase-database:16.0.1'
          */
-////        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
         if (firebaseAuth.getCurrentUser() == null) {
             /**
              * класс - AuthUI надо импортировать, для этого в build.gradle прописываем -->
              *     implementation 'com.firebaseui:firebase-ui:0.6.2'
              */
             // пользователь не авторизован, проводим авторизацию
-            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), SING_IN_CODE);
+            // пока эта строка закометирова так как база не подключается по какой-то причине
+//            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), SING_IN_CODE);
         } else {
             Snackbar.make(mainRelativeLayout, "Добро пожаловать :)", Snackbar.LENGTH_LONG).show();
         }
-
         displayAllMessage();
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SING_IN_CODE) {
+            if (requestCode == RESULT_OK) {
+                Snackbar.make(mainRelativeLayout, "Вы успешно зарегистрированы :)",
+                        Snackbar.LENGTH_LONG).show();
+                displayAllMessage();
+            } else {
+                Snackbar.make(mainRelativeLayout, "Вы не зарегистрированы :(",
+                        Snackbar.LENGTH_LONG).show();
+                finish();
+            }
+        }
     }
 
 
@@ -140,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
                 .setLayout(R.layout.list_item)
                 .build();
         adapter = new FirebaseListAdapter<Message>(options) {
-
 //        adapter = new FirebaseListAdapter<Message>(this, Message.class,
 //                // стили вывода и подключение к базе данных
 //                R.layout.list_item, FirebaseDatabase.getInstance().getReference()) {

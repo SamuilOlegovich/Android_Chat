@@ -6,18 +6,21 @@ import java.util.Date;
 
 public class  Message {
     private String textMessage;
+    private Long messageTime;
     private String userName;
 
-    private Long messageTime;
 
 
     public Message() { }
+
 
     public Message(String userName, String textMessage) {
         this.messageTime = new Date().getTime();
         this.textMessage = textMessage;
         this.userName = userName;
     }
+
+
 
 
     public String getTextMessage() {

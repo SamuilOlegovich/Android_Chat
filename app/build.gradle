@@ -47,15 +47,15 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation platform('com.google.firebase:firebase-bom:26.1.0')
 
     // для работы с классом - FirebaseAuth
-    implementation 'com.google.firebase:firebase-core:17.2.1'
+    implementation 'com.google.firebase:firebase-core:18.0.0'
     // позволит авторизоваться в базах данных
-    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.1'
     // позволит контактировать с базой данных
     implementation 'com.google.firebase:firebase-database:19.5.1'
     // позволит импортировать класс - AuthUI - для работы с авторизацией
@@ -69,15 +69,15 @@ dependencies {
     // для работы со шрифтами стилями и т д
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
     // тоже надо
-    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
     implementation 'com.github.lguipeng:BubbleView:1.0.1'
     implementation platform('com.google.firebase:firebase-bom:26.1.0')
     implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
-    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.1'
     implementation 'com.firebaseui:firebase-ui-database:6.2.1'
     implementation 'com.github.hani-momanii:SuperNova-Emoji:1.1'
 
